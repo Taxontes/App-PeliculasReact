@@ -1,6 +1,6 @@
 import React from 'react'
 import { useId } from 'react'
-
+import './gallery.css'
 export const Gallery = () => {
 
     const peliculas = [

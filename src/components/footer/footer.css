@@ -1,0 +1,37 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 0;
+    margin-top: 100px;
+    border-top: 1px soid #ff2f283d;
+}
+.footer ul{
+    display: flex;
+    list-style: none;
+}
+
+.footer a{
+    color: #efefef;
+    font-size: 20px;
+    margin-right: 20px;
+    display: block;
+    text-decoration: none;
+    
+}
+.footer a:hover{
+    color: #ff2f28;
+    
+}
+
+@media (max-width: 991px) {
+    .footer {
+        margin-top: 30px;
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer ul{
+        margin-top: 15px;
+        justify-content: center;
+    }
+}

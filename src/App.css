@@ -13,3 +13,39 @@ body{
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.load-more {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #ff2f28;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #ff2f28;
+    cursor: pointer;
+    align-self: end;
+}
+
+.load-more:hover {
+    background-color: #ff2f28;
+    color: #efefef;
+
+}
+
+.content img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+content h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+content{
+    color: #cfcfcf;
+    font-size: 20px;
+}
+
+
+
+

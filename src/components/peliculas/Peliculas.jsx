@@ -1,5 +1,6 @@
 import React from 'react'
 import { useId } from 'react'
+import './peliculas.css'
 export const Peliculas = () => {
 
     const peliculas = [
