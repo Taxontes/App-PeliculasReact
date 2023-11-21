@@ -1,9 +1,13 @@
 .footer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 100px 0;
     margin-top: 100px;
-    border-top: 1px soid #ff2f283d;
+    border-top: 1px solid #ff2f283d;
+}
+.footer h3{
+    font-size: 24px;
 }
 .footer ul{
     display: flex;
