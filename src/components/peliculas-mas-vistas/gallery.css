@@ -47,9 +47,20 @@
     color: #fff;
     padding: 0.3rem;
     line-height: 2.5rem;
+    cursor: pointer;
 
 }
 .next img ,.back img{
     width: 30px;
     height: 30px;
+}
+
+@media (max-width: 720px) {
+
+   .load-more{
+    margin-right: 80px;
+    margin-bottom: 40px;
+   }
+
+
 }

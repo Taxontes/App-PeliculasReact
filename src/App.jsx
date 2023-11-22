@@ -11,8 +11,7 @@ function App() {
     <>
       <Header />
       <Gallery />
-      <Peliculas />
-      <PeliculasEstreno />
+      
       <Slider />
       <Footer />
       

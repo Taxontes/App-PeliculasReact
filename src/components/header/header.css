@@ -116,7 +116,7 @@
     margin-left: 150px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 720px) {
 
     .menu {
         padding: 20px;
