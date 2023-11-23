@@ -1,4 +1,4 @@
-import { API_KEYTMDB, API_URL, URL_IMAGE } from "../costants/costants.js";
+import { API_KEYTMDB, API_URL } from "../costants/costants.js";
 
 export const fetchPeliculas = async (currentPage) => {
 

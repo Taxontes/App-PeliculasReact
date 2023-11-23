@@ -116,7 +116,57 @@
     margin-left: 150px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
+
+    .menu {
+        padding: 20px;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #030303;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    .btn-1 {
+        display: none;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+
+    }
+
+    .header-content {
+        flex-direction: column;
+        padding: 180px 30px 30px 30px;
+    }
+
+    .header1 {
+        width: 100%;
+        align-items: center;
+    }
+
+    .header2 {
+        width: 100%;
+        text-align: center;
+    }
+
+
+}
+
+@media (max-width: 390px) {
 
     .menu {
         padding: 20px;

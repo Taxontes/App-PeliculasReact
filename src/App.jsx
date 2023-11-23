@@ -6,15 +6,26 @@ import { PeliculasEstreno } from './components/peliculas-estreno/PeliculasEstren
 import { Footer } from './components/footer/Footer'
 import { Slider } from './components/slider/Slider'
 function App() {
- 
+
   return (
     <>
-      <Header />
-      <Gallery />
-      
-      <Slider />
-      <Footer />
-      
+      <section id='header'>
+        <Header />
+      </section>
+
+      <main>
+        <Gallery />
+      </main>
+
+      <section>
+        <Slider />
+      </section>
+
+      <section>
+        <Footer />
+      </section>
+
+
     </>
   )
 }
