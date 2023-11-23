@@ -8,6 +8,8 @@
     animation: spiner 1s linear infinite;
     grid-column: 1/6;
     margin: 0 auto;
+    margin-top: 50px;
+   
 }
 
 @keyframes spiner{

@@ -2,7 +2,9 @@ import React from 'react'
 import './footer.css'
 export const Footer = () => {
   return (
-      <>
+    <>
+      <section className='contenedor-footer'>
+
           <footer className='footer container'>
               <h3>Nefli</h3>
               <ul>
@@ -12,6 +14,7 @@ export const Footer = () => {
                 <li><a href="#">Inicio</a></li>
               </ul>
           </footer>
+      </section>
 
 
       </>
