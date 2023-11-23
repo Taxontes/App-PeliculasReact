@@ -13,15 +13,15 @@ export const Gallery = () => {
    
 
     useEffect(() => {
+        setisLoading(true)
         const fetchData = async () => {
             try {
-                setisLoading(true)
                 const { resultado, paginasTotales } = await fetchPeliculas(currentPage);
                 setPeliculas(resultado);
                 setTotalPaginas(paginasTotales)
             } catch (error) {
                 console.error('Error al obtener las películas', error);
-                setisLoading(false)
+                
             } finally {
                 setisLoading(false)
             }
