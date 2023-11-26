@@ -1,87 +1,84 @@
 import React from 'react'
-import { useId } from 'react'
+import { useEffect, useState } from 'react'
+import { fetchSearchMovie, fetchVideoMovie } from '../../services/fetchMovies'
 import './peliculas.css'
+import YouTube from 'react-youtube';
+
 export const Peliculas = () => {
 
-    const peliculas = [
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+    const [movie, setMovie] = useState()
+    const [movieId, setMovieId] = useState(157336)
+    const [videos, setVideos] = useState([]);
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+    useEffect(() => {
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+        const fetchMovie = async () => {
+            try {
+                const data = await fetchSearchMovie(movieId)
+                setMovie(data)
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+            } catch (error) {
+                console.error('Ocurrió un error al buscar la pelicula', error)
+            }
+        }
+        fetchMovie(movieId)
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+    }, [])
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                const data = await fetchVideoMovie(movieId)
+                const officialTrailer = data.videos.results.find(video => video.type === 'Trailer');
+                setVideos(officialTrailer)
+              
+            } catch (error) {
+                console.error('Ocurrió un error al buscar la pelicula', error)
+            }
+        }
+        fetchVideo()
 
-        },
-        {
-            id: useId(),
-            title: 'Pelicula1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam, est dicta sit voluptatibus quae similique, quidem quisquam tenetur suscipit nobis? Quia nobis quidem est tempora repudiandae totam ipsum iste!',
-            imagen: "/7.jpg"
+    }, [movieId])
 
-        },
 
-    ]
-  return (
-      <>
-          <section className='movies container'>
-              <h2>Películas</h2>
-              <hr />
-              <div className="box-container-2">
-                  {peliculas.map((item) => (
-                      <div className="box-2" key={item.id}>
-                          <div className="content">
-                              <img src={item.imagen} alt="" />
-                              <h3>{item.title}</h3>
-                              <p>{item.description}</p>
-                          </div>
-                      </div>
-                  ))}
-              </div>
-              <div className="load-more" id='load-more-1'>
-                  Cargar más
-              </div>
-          </section>
-      </>
-  )
+    return (
+        <>
+            <section className='movies container'>
+                <h2>Películas</h2>
+                <hr />
+                <div className="box-container-2">
+                    <div>
+                        {movie ? (
+                            <div>
+                                <h2>{movie.title}</h2>
+                                <p>{movie.overview}</p>
+                                {movie.poster_path && (  // Verifica si hay una ruta de póster disponible
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                        alt={movie.title}
+                                    />
+                                )}
+                            </div>
+                        ) : (
+                            <p>Cargando información de la película...</p>
+                        )}
+                        {videos && (
+                            <div>
+                                <h3>Tráiler Oficial</h3>
+                                <YouTube
+                                    videoId={videos.key}
+                                    opts={{ width: '560', height: '315' }}
+                               
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="load-more" id='load-more-1'>
+                    Cargar más
+                </div>
+            </section>
+        </>
+    )
 }

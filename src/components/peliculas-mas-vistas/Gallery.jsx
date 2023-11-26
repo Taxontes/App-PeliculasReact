@@ -6,6 +6,7 @@ import { fetchPeliculas } from '../../services/fetchMovies.js';
 import { Loader } from '../loader/Loader.jsx';
 
 export const Gallery = () => {
+    
     const [movies, setPeliculas] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPaginas, setTotalPaginas] = useState(0);

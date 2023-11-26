@@ -12,7 +12,9 @@ function App() {
       <section id='header'>
         <Header />
       </section>
-
+      <section>
+        <Peliculas/>
+      </section>
       <main>
         <Gallery />
       </main>
