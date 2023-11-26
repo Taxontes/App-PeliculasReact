@@ -1,0 +1,35 @@
+
+.main-visualizador{
+    display: grid;
+    grid-template-columns:300px 1fr;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    gap: 20px;
+    height: auto;
+
+}
+.visual-content-visualizador{
+    margin: 20px;
+   
+}
+.visual-content-visualizador img{
+    border-radius: 10px;
+   
+}
+.info-content-visualizador h1, h4, p {
+  
+    color: #efefef;
+}
+.info-content-visualizador p {
+    font-size: 20px;
+}
+
+
+.trailer-visualizador{
+    margin: 20px;
+    grid-column: 1/-1;
+}
+.trailer-visualizador img{
+    width: 100%;
+}

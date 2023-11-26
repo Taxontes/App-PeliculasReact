@@ -4,6 +4,7 @@ import './gallery.css'
 import { URL_IMAGE } from '../../costants/costants.js'
 import { fetchPeliculas } from '../../services/fetchMovies.js';
 import { Loader } from '../loader/Loader.jsx';
+import { Visualizador } from '../visualizador/Visualizador.jsx';
 
 export const Gallery = () => {
     
@@ -11,21 +12,23 @@ export const Gallery = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPaginas, setTotalPaginas] = useState(0);
     const [isLoading, setisLoading] = useState(false)
-
+    const [visualicer, setVisualizer] = useState(false)
 
 
 
     useEffect(() => {
+
         setisLoading(true)
         window.scrollTo(0, 0);
+
         const fetchData = async () => {
             try {
 
-                const peliculasCargadas = movies.length > 0;
+         
 
                 const { resultado, paginasTotales } = await fetchPeliculas(currentPage);
                 setPeliculas(resultado)
-                // setPeliculas(prevPeliculas => peliculasCargadas ? [...prevPeliculas, ...resultado] : resultado);
+             
                 setTotalPaginas(paginasTotales)
             } catch (error) {
                 console.error('Error al obtener las películas', error);
@@ -36,9 +39,7 @@ export const Gallery = () => {
         };
 
         fetchData();
-        
-        // const peliculasElement = document.getElementById('header');
-        // peliculasElement.scrollIntoView({ behavior: 'smooth' });
+    
         
 
     }, [currentPage]);
@@ -53,8 +54,10 @@ export const Gallery = () => {
         setCurrentPage((prev) => parseInt(prev, 10) - 1);
     }
 
-
-
+    const switchWindow = () => { 
+        setVisualizer((prevState) => !prevState)
+        console.log(visualicer)
+    }
 
 
     return (
@@ -62,23 +65,19 @@ export const Gallery = () => {
             <section  className='movies container'>
                 <h2>Películas más vistas</h2>
                 <hr />
+                <h2 id='trailers'>{visualicer ? 'Películas más vistas' : <Visualizador/>}</h2>
                 <div className="box-container-1"  >
 
-                    {isLoading ? <Loader/>:
+                    {isLoading ? <Loader/> :
                         movies.map((item) => (
                             <div id='peliculas' className="box-1" key={item.id}>
                                 <div className="content">
-                                    <img className="fadeIn" src={`${URL_IMAGE}${item.poster_path}`} alt="" />
+                                    <a href='#trailers' onClick={switchWindow}><img className="movie-img" src={`${URL_IMAGE}${item.poster_path}`} alt="" /></a> 
                                 </div>
                             </div>
                         ))}
-
                 </div>
 
-
-                {/* <div className='button-gallery' id='load-more'>
-                    <button onClick={siguientePagina} className='load-more'> Cargar más</button>
-                </div> */}
                 <div className="paginado">
                     {currentPage === 1 ? <button className='back' style={{ display: 'none' }}><img src="/icons/arrowLeft.png" alt="" /></button> : <button onClick={anteriorPagina} className='back'><img src="/icons/arrowLeft.png" alt="" /></button>}
                     <div className="numeracion">

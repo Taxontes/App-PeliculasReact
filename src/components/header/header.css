@@ -10,13 +10,19 @@
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding:0 50px;
+
+    animation: modify-header linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 200px;
+    
 }
 
 .logo {
@@ -114,6 +120,17 @@
     margin-top: 30px;
     text-decoration: none;
     margin-left: 150px;
+
+}
+
+@keyframes modify-header{
+    to{
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        font-size: 18px;
+        color: black;
+    }
+  
 }
 
 @media (max-width: 768px) {
