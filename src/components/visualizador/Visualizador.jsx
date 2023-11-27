@@ -1,82 +1,71 @@
 import React from 'react'
 import './visualizador.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { fetchSearchMovie, fetchVideoMovie } from '../../services/fetchMovies'
 import { URL_IMAGE } from '../../costants/costants'
+import { Loader } from '../loader/Loader'
 import YouTube from 'react-youtube';
 
-export const Visualizador = () => {
+export const Visualizador = ({ movieId, setVisualizer }) => {
 
     const [movie, setMovie] = useState()
-    const [movieId, setMovieId] = useState(157336)
     const [videos, setVideos] = useState([]);
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
-
-        const fetchMovie = async () => {
+        const fetchData = async () => {
             try {
-                const data = await fetchSearchMovie(movieId)
-                setMovie(data)
+                const movieData = await fetchSearchMovie(movieId);
+                setMovie(movieData);
 
+                const videoData = await fetchVideoMovie(movieId);
+                const allVideos = videoData.videos.results;
+                const officialTrailer = allVideos.find(video => video.type === 'Trailer');
+                setVideos(officialTrailer);
+                setLoading(false)
             } catch (error) {
-                console.error('Ocurrió un error al buscar la pelicula', error)
+                console.error('Error al buscar la película', error);
+            } finally {
+                setLoading(false);
             }
-        }
-        fetchMovie(movieId)
+        };
 
-    }, [])
+        fetchData();
 
-  
+       
+    }, [movieId]);
 
-    useEffect(() => {
-        const fetchVideo = async () => {
-            try {
-                const data = await fetchVideoMovie(movieId)
-                const officialTrailer = data.videos.results.find(video => video.type === 'Trailer');
-                setVideos(officialTrailer)
-
-            } catch (error) {
-                console.error('Ocurrió un error al buscar la pelicula', error)
-            }
-        }
-        fetchVideo()
-
-    }, [movieId])
-
-
+    const cerrarVisualizador = useCallback(() => {
+        setVisualizer(false);
+    }, [setVisualizer]);
 
     return (
-        <>
-            {
-                movie && (
+        <>  
+          
+            {!loading && movie ? (
                     <main className='main-visualizador'
                         style={{
                             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('${URL_IMAGE}${movie.poster_path}')`,
-
-
                         }}>
                         <section className='visual-content-visualizador'>
 
                             <img
                                 src={`${URL_IMAGE}${movie.poster_path}`}
                                 alt={movie.Title}
-                            />
+                                />
                         </section>
-
-
                         <section className='info-content-visualizador'>
+                                <div className='cerrar-visualizador'>
+                                <button onClick={cerrarVisualizador}>X</button>
+                                </div>
                             <h2>{movie.original_title}</h2>
 
                             <p>{movie.overview}
                             </p>
                         </section>
 
-
-
-
                         <section className='trailer-visualizador'>
-
                             {videos && (
                                 <YouTube
                                     videoId={videos.key}
@@ -84,7 +73,10 @@ export const Visualizador = () => {
                             )}
                         </section>
                     </main>
-                )}
+            )
+                :
+                <Loader />
+        }
         </>
     )
 }
