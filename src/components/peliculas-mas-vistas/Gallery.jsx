@@ -46,17 +46,18 @@ export const Gallery = () => {
 
     const siguientePagina = () => {
         setCurrentPage((prev) => parseInt(prev, 10) + 1);
-    
+        setVisualizer(false)
 
     }
 
     const anteriorPagina = () => {
         setCurrentPage((prev) => parseInt(prev, 10) - 1);
+        setVisualizer(false)
     }
 
     const switchWindow = () => { 
         setVisualizer((prevState) => !prevState)
-        console.log(visualicer)
+       
     }
 
 
@@ -65,7 +66,7 @@ export const Gallery = () => {
             <section  className='movies container'>
                 <h2>Películas más vistas</h2>
                 <hr />
-                <h2 id='trailers'>{visualicer ? 'Películas más vistas' : <Visualizador/>}</h2>
+                <h2 id='trailers'>{visualicer && <Visualizador/>}</h2>
                 <div className="box-container-1"  >
 
                     {isLoading ? <Loader/> :

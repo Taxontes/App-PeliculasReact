@@ -1,3 +1,7 @@
+.movies h2{
+    color: #efefef;
+}
+
 .box-container-1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -79,11 +83,8 @@
 
 .movie-img {
     animation: fadeIn 1s ease-in-out;
-    transition: opacity 0.3s ease;
-    
-    &:hover{
-        opacity: 0.7;
-    }
+   
+  
   
 }
 
