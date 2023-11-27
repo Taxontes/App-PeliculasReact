@@ -68,7 +68,7 @@ export const Gallery = () => {
 
                     {isLoading ? <Loader /> :
                         movies.map((item) => (
-                            <div id='peliculas' className="box-1" key={item.id}>
+                            <div id='peliculas'key={item.id}>
                                 <div className="content">
                                     <a href='#trailers' onClick={() => switchWindow(item.id)}><img className="movie-img" src={`${URL_IMAGE}${item.poster_path}`} alt="" /></a>
                                 </div>

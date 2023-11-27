@@ -1,83 +1,61 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { fetchSearchMovie, fetchVideoMovie } from '../../services/fetchMovies'
-import './peliculas.css'
-import YouTube from 'react-youtube';
+import { fetchPeliculasBySearch } from '../../services/fetchMovies'
+import { URL_IMAGE } from '../../costants/costants'
+import { Loader } from '../loader/Loader.jsx';
+
+import './pelicula.css'
+
 
 export const Peliculas = () => {
 
-    const [movie, setMovie] = useState()
-    const [movieId, setMovieId] = useState(157336)
-    const [videos, setVideos] = useState([]);
-
+    const [titleMovie, setTitleMovie] = useState('batman')
+    const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
+  
 
     useEffect(() => {
 
-        const fetchMovie = async () => {
+        const fetchMovieSearching = async () => {
             try {
-                const data = await fetchSearchMovie(movieId)
-                setMovie(data)
+                const data = await fetchPeliculasBySearch(titleMovie)
+                console.log(data.resultado)
+                setMovies(data.resultado)
 
             } catch (error) {
                 console.error('Ocurrió un error al buscar la pelicula', error)
+            } finally {
+                setLoading(false)
             }
         }
-        fetchMovie(movieId)
+        fetchMovieSearching()
 
-    }, [])
+    }, [titleMovie])
 
-    useEffect(() => {
-        const fetchVideo = async () => {
-            try {
-                const data = await fetchVideoMovie(movieId)
-                const officialTrailer = data.videos.results.find(video => video.type === 'Trailer');
-                setVideos(officialTrailer)
-              
-            } catch (error) {
-                console.error('Ocurrió un error al buscar la pelicula', error)
-            }
-        }
-        fetchVideo()
-
-    }, [movieId])
 
 
     return (
         <>
-            <section className='movies container'>
-                <h2>Películas</h2>
+            <section className='search container'>
+                <h2>Resultados de búsqueda</h2>
                 <hr />
-                <div className="box-container-2">
-                    <div>
-                        {movie ? (
-                            <div>
-                                <h2>{movie.title}</h2>
-                                <p>{movie.overview}</p>
-                                {movie.poster_path && (  // Verifica si hay una ruta de póster disponible
-                                    <img
-                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                        alt={movie.title}
-                                    />
-                                )}
-                            </div>
+                <div className="peliculas-contenedor">
+                    <div className='search-content'>
+                        { movies ? (
+                            movies.map((item) => (
+                                <div key={item.id}>
+                                    <img src={item.poster_path ? `${URL_IMAGE}${item.poster_path}` : '/notFound.jpg'} alt="" />
+                                    <h1>{item.original_title}</h1>
+                                   
+                                </div>
+                            ))
                         ) : (
-                            <p>Cargando información de la película...</p>
+                            <p>No se encontraron películas</p>
                         )}
-                        {videos && (
-                            <div>
-                                <h3>Tráiler Oficial</h3>
-                                <YouTube
-                                    videoId={videos.key}
-                                    opts={{ width: '560', height: '315' }}
-                               
-                                />
-                            </div>
-                        )}
+                        {loading && <Loader/>}
+                        </div>
                     </div>
-                </div>
-                <div className="load-more" id='load-more-1'>
-                    Cargar más
-                </div>
+                
             </section>
         </>
     )

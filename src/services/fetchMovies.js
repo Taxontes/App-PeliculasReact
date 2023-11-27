@@ -1,5 +1,7 @@
 import { API_KEYTMDB, API_URL } from "../costants/costants.js";
 
+
+//funcion para devolver el listado de peliculas de la API
 export const fetchPeliculas = async (currentPage) => {
   try {
     const response = await fetch(
@@ -16,6 +18,8 @@ export const fetchPeliculas = async (currentPage) => {
   }
 };
 
+//funcion para devolver la informacion de la pelicula por su id
+
 export const fetchSearchMovie = async (movieId) => {
   try {
     const response = await fetch(
@@ -29,6 +33,10 @@ export const fetchSearchMovie = async (movieId) => {
     console.error("Error al obtener las películas", error);
   }
 };
+
+
+
+//funcion para devolver el video de la pelicula por su id
 
 export const fetchVideoMovie = async (movieId) => {
   try {
@@ -47,3 +55,23 @@ export const fetchVideoMovie = async (movieId) => {
     console.error("Ocurrió un error al cargar el video", error);
   }
 };
+
+
+//funcion para devolver los resultados optenidos por el buscador
+export const fetchPeliculasBySearch = async (title) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/search/movie?query=${title}&api_key=${API_KEYTMDB}`
+    );
+
+    const data = await response.json();
+    const resultado = data.results;
+   
+
+    return { resultado };
+
+  } catch (error) {
+    console.error("Error al obtener las películas", error);
+  }
+};
+

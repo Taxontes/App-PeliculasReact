@@ -13,9 +13,10 @@ function App() {
         <Header />
       </section>
       <section>
-       
+        <Peliculas></Peliculas>
       </section>
       <main>
+       
         <Gallery />
       </main>
 
