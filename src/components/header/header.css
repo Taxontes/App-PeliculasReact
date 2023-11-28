@@ -183,18 +183,19 @@
     .menu .buscador {
         position: absolute;
         top: 100%;
-        /* Ajusta la posición según sea necesario */
         left: 50%;
-        /* Centra horizontalmente */
         transform: translateX(-50%);
-        /* Ajusta para centrar horizontalmente */
-        background-color: #030303;
+        background-color: #efefef;
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: #000000;
+        margin-top: 30px;
 
+    }
 
-
+    .input-buscador {
+        color: #000000;
     }
 
     .menu .navbar ul li {
@@ -284,16 +285,17 @@
         position: absolute;
         width: 250px;
         top: 100%;
-        /* Ajusta la posición según sea necesario */
+        background-color: #efefef;
         left: 50%;
-        /* Centra horizontalmente */
         transform: translateX(-50%);
-        /* Ajusta para centrar horizontalmente */
-        background-color: #030303;
         display: flex;
         flex-direction: column;
         align-items: center;
 
+    }
+
+    .input-buscador {
+        color: #000000;
     }
 
 

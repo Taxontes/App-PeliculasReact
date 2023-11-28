@@ -15,6 +15,44 @@
 .not-found-movies{
   text-align: center;
   font-size: 24px;
+  color: #efefef;
 
+}
+.title-movie-searched{
+  text-align: center;
+  color: #efefef;
+}
+
+
+@media (max-width: 768px) {
+
+  .search {
+    margin: 30px;
+   
+    }
+
+.title-search {
+    font-size: 24px;
+   
+  }
+    .title-search {
+      color: #efefef;
+      font-size: 36px;
+    }
+   
+ 
+}
+
+@media (max-width: 415px) {
+.title-search {
+    font-size: 18px;
+    
+  }
+    .not-found-movies {
+        font-size: 18px;
+  
+  
+    }
+  
 
 }

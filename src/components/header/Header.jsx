@@ -2,6 +2,8 @@ import React from 'react'
 import './header.css'
 import { useBusqueda } from '../../context/BusquedaContext.jsx'
 import { Link } from 'react-scroll';
+import { IconMenu } from '../../icons/IconoMenu.jsx';
+
 
 export const Header = () => {
 
@@ -27,7 +29,7 @@ export const Header = () => {
                     <a href="#" className='logo'>Nefli</a>
                     <input type="checkbox" id='menu' />
                     <label htmlFor="menu">
-                        <img className='menu-icon' src="/menu.png" alt="menu" />
+                        <IconMenu/>
                     </label>
 
                     <nav className='navbar'>

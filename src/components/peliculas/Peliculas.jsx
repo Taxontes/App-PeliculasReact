@@ -48,7 +48,7 @@ export const Peliculas = () => {
                             movies.map((item) => (
                                 <div key={item.id}>
                                     <img src={item.poster_path ? `${URL_IMAGE}${item.poster_path}` : '/notFound.jpg'} alt="" />
-                                    <h1>{item.original_title}</h1>
+                                    <h1 className='title-movie-searched'>{item.original_title}</h1>
                                    
                                 </div>
                             ))

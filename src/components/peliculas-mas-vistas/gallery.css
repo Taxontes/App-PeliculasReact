@@ -1,4 +1,4 @@
-.movies h2{
+.movies h2 {
     color: #efefef;
     font-size: 36px;
 }
@@ -101,6 +101,10 @@
 
 @media (max-width: 768px) {
 
+    .movies h2 {
+        font-size: 18px;
+    }
+
     .load-more {
         margin-right: 80px;
         margin-bottom: 40px;
@@ -111,11 +115,19 @@
         margin-right: 0;
     }
 
+    .movies {
+        margin: 30px;
+    }
+
 
 
 }
 
 @media (max-width: 415px) {
+
+    .movies {
+        margin: 30px;
+    }
 
     .button-gallery {
         display: flex;
