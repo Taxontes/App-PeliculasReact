@@ -6,7 +6,7 @@ export const Footer = () => {
       <section className='contenedor-footer'>
 
           <footer className='footer container'>
-              <h3>Nefli</h3>
+          <h3>Reelsz</h3>
               <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#trailers">Películas</a></li>

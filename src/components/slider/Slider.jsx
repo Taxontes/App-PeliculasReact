@@ -54,7 +54,7 @@ export const Slider = () => {
                   {
                       imagenes.map((item) => (
                         <div key={item.id} className="slide">
-                            <img src={item.img} alt="" />
+                            <img src={item.img} alt="Imagen de cartelera povista por la propia aplicación" />
                         </div>
                       ))
                   }

@@ -47,7 +47,7 @@ export const Peliculas = () => {
                         {movies && (
                             movies.map((item) => (
                                 <div key={item.id}>
-                                    <img src={item.poster_path ? `${URL_IMAGE}${item.poster_path}` : '/notFound.jpg'} alt="" />
+                                    <img src={item.poster_path ? `${URL_IMAGE}${item.poster_path}` : '/notFound.jpg'} alt="Poster de cada película devuelta por la Api" />
                                     <h1 className='title-movie-searched'>{item.original_title}</h1>
                                    
                                 </div>

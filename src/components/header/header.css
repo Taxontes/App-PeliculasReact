@@ -1,13 +1,16 @@
 .header {
-    background-image: url('/bg.jpg');
+    background-image: url('/bgThor.jpg');
     background-position: center center;
     background-repeat: none;
-    background-size: cover;
-    min-height: 70vh;
+    background-size: 100% 100%;
+    height: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-height: 70vh;
 
 }
+
 
 .menu {
     position: fixed;
@@ -28,20 +31,20 @@
     font-size: 35px;
     color: #ff2f28;
     text-decoration: none;
-
+    font-weight: 400;
 }
 
 .menu .navbar ul li {
     position: relative;
     float: left;
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
 }
 
 .menu .navbar ul li a {
     font-size: 22px;
-    padding: 20px;
+    padding: 0 20px;
     text-decoration: none;
     color: #efefef;
     display: block;
@@ -67,46 +70,26 @@
 .header-content {
     display: flex;
     width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 180px;
+    margin-left: 200px;
 }
 
 .header1 {
     display: flex;
     flex-direction: column;
     width: 50%;
-    align-self: flex-end;
 
 }
 
 
 .header1 img {
-    width: 300px;
+    width: 400px;
 
 }
 
-.header2 {
-    width: 50%;
-    margin-top: 80px;
-    text-align: end;
-}
 
-.header2 h1 {
-    color: #ffffff72;
-    font-size: 80px;
-    line-height: 80px;
-}
-
-.header2 img {
-    width: 90px;
-}
-
-.btn-1 {
-    display: inline-block;
-    padding: 7px 20px;
-    background-color: #ff2f28;
-    color: #ffffff;
-    font-size: 20px;
-    text-decoration: none;
-}
 
 .btn-2 {
     width: 120px;
@@ -119,7 +102,7 @@
     font-size: 20px;
     margin-top: 30px;
     text-decoration: none;
-    margin-left: 150px;
+    margin-left: 120px;
     cursor: pointer;
 
 }
@@ -162,6 +145,19 @@
 }
 
 @media (max-width: 887px) {
+
+    .header {
+        background-size: cover;
+    }
+
+    .header-content {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 400px;
+        margin-left: 60px;
+    }
 
     .menu {
         padding: 20px;
@@ -241,16 +237,23 @@
 
 }
 
-@media (max-width: 497px) {
+@media (max-width: 540px) {
 
+.header {
+        background-size: cover;
+    }
     .menu {
         padding: 20px;
     }
 
     .menu label {
         display: initial;
+        margin-right: 30px;
     }
 
+    .logo{
+        margin-left: 20px;
+    }
     .menu .navbar {
         position: absolute;
         top: 100%;
@@ -283,9 +286,78 @@
         align-items: center;
     }
 
-    .header2 {
+
+    .menu .buscador {
+        position: absolute;
+        width: 250px;
+        top: 100%;
+        background-color: #efefef;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+
+    }
+
+
+    #menu:checked~.buscador {
+        top: calc(100% + 400px);
+
+    }
+
+    .input-buscador {
+        color: #000000;
+    }
+
+
+}
+@media (max-width: 380px) {
+
+.header {
+        background-size: cover;
+        margin: 0;
+    }
+    .menu {
+        padding: 10px;
+    }
+
+    .menu label {
+        display: initial;
+        margin-right: 50px;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #030303;
+        display: none;
+    }
+
+    .menu .navbar ul li {
         width: 100%;
-        text-align: center;
+    }
+
+    .btn-1 {
+        display: none;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+
+    }
+
+    .header-content {
+        flex-direction: column;
+        padding: 180px 30px 30px 0;
+    }
+
+    .header1 {
+        width: 100%;
+        align-items: center;
     }
 
     .menu .buscador {
@@ -298,10 +370,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-      
+
 
     }
-    
+
 
     #menu:checked~.buscador {
         top: calc(100% + 400px);

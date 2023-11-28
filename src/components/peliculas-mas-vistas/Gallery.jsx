@@ -70,19 +70,19 @@ export const Gallery = () => {
                         movies.map((item) => (
                             <div id='peliculas'key={item.id}>
                                 <div className="content">
-                                    <a href='#trailers' onClick={() => switchWindow(item.id)}><img className="movie-img" src={`${URL_IMAGE}${item.poster_path}`} alt="" /></a>
+                                    <a href='#trailers' onClick={() => switchWindow(item.id)}><img className="movie-img" src={`${URL_IMAGE}${item.poster_path}`} alt="Poster devuelto por la Api para cada película" /></a>
                                 </div>
                             </div>
                         ))}
                 </div>
 
                 <div className="paginado">
-                    {currentPage === 1 ? <button className='back' style={{ display: 'none' }}><img src="/icons/arrowLeft.png" alt="" /></button> : <button onClick={anteriorPagina} className='back'><img src="/icons/arrowLeft.png" alt="" /></button>}
+                    {currentPage === 1 ? <button className='back' style={{ display: 'none' }}><img src="/icons/arrowLeft.png" alt="" /></button> : <button onClick={anteriorPagina} className='back'><img src="/icons/arrowLeft.png" alt="Icono de flecha para cambiar de página hacia la izquierda" /></button>}
                     <div className="numeracion">
                         <span className='paginaActual' >{currentPage}</span>  de {totalPaginas}
                     </div>
 
-                    <button className='next' onClick={siguientePagina}><img src="/icons/arrowRight.png" alt="" /></button>
+                    <button className='next' onClick={siguientePagina}><img src="/icons/arrowRight.png" alt="Icono de flecha para cambiar de página hacia la derecha" /></button>
                 </div>
             </section>
         </>
