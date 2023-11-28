@@ -9,9 +9,9 @@ export const Footer = () => {
               <h3>Nefli</h3>
               <ul>
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Inicio</a></li>
+                <li><a href="#trailers">Películas</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="#">Géneros</a></li>
               </ul>
           </footer>
       </section>

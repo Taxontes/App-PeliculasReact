@@ -18,32 +18,38 @@ export const Slider = () => {
         },
         {
             id: useId(),
-            img: '/7.jpg',
+            img: '/4.jpg',
         },
         {
             id: useId(),
-            img: '/12.jpg',
+            img: '/8.jpg',
         },
         {
             id: useId(),
-            img: '/12.jpg',
+            img: '/9.jpg',
         },
         {
             id: useId(),
-            img: '/12.jpg',
+            img: '/14.jpg',
         },
         {
             id: useId(),
-            img: '/12.jpg',
+            img: '/15.jpg',
         },
         {
             id: useId(),
-            img: '/12.jpg',
+            img: '/20.jpg',
+        },
+        {
+            id: useId(),
+            img: '/24.jpg',
         },
     ]
   return (
       <>
           <div className="slider container">
+              <h2 className='title-slider'>Películas destacadas</h2>
+              <hr className='hr-slider'/>
               <div className="slider-track">
                   {
                       imagenes.map((item) => (

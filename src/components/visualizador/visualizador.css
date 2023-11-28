@@ -57,6 +57,9 @@
     cursor: pointer ;
 }
 
+.btn-visualizador{
+    color: #efefef;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;

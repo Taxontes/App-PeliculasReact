@@ -63,7 +63,7 @@ export const Visualizador = ({ movieId, setVisualizer }) => {
                         </section>
                         <section className='info-content-visualizador'>
                                 <div className='cerrar-visualizador'>
-                                <button onClick={cerrarVisualizador}>X</button>
+                                    <button className='btn-visualizador' onClick={cerrarVisualizador}>X</button>
                                 </div>
                             <h2>{movie.original_title}</h2>
 

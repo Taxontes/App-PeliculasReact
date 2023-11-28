@@ -40,7 +40,7 @@ export const Peliculas = () => {
     return (
         <>
             <section className='search container'>
-                <h2>Resultados de búsqueda</h2>
+                <h2 className='title-search'>Resultados de búsqueda</h2>
                 <hr />
                 <div className="peliculas-contenedor">
                     <div className='search-content'>

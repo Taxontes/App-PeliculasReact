@@ -7,9 +7,9 @@
 
 .slider .slider-track{
     display: flex;
-    animation: scroll 10s linear infinite;
+    animation: scroll 20s linear infinite;
     animation-direction: alternate;
-    width: calc(200px * 18);
+    width: calc(200px * 20);
     gap: 30px;
 }
 
@@ -22,6 +22,13 @@
     width: 100%;
 
 }
+.title-slider{
+   color: #efefef;
+    font-size: 30px;
+}
+.hr-slider{
+    width: 30%;
+}
 
 @keyframes scroll {
     0%{
@@ -29,7 +36,7 @@
        
     }
     100%{
-        transform: translateX(calc(-40px * 9 ));
+        transform: translateX(calc(-60px * 10 ));
        
     }
     

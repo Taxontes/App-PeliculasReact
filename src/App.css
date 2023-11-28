@@ -44,6 +44,13 @@ content{
     color: #cfcfcf;
     font-size: 20px;
 }
+hr{
+    border: 1px solid #ff2f28;
+    width: 50%;
+    margin-bottom:40px ;
+    margin-left: 0;
+   
+}
 
 
 
