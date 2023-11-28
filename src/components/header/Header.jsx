@@ -1,6 +1,7 @@
 import React from 'react'
 import './header.css'
 import { useBusqueda } from '../../context/BusquedaContext.jsx'
+import { Link } from 'react-scroll';
 
 export const Header = () => {
 
@@ -55,11 +56,11 @@ export const Header = () => {
                 <div className="header-content container">
                     <div className="header1">
                         <img src="/venom.png" alt="" />
-                        <a href="#" className='btn-2'> Ver ahora</a>
+                        <Link to="trailers" smooth={true} duration={500} className='btn-2'> Ver películas</Link>
                     </div>
                     <div className="header2">
                         <h1>Las mejores <br />películas</h1>
-                        <img src="/play.png" alt="" />
+                       
                     </div>
                 </div>
             </header>

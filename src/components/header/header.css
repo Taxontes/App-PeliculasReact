@@ -109,7 +109,7 @@
 }
 
 .btn-2 {
-    width: 90px;
+    width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,6 +120,7 @@
     margin-top: 30px;
     text-decoration: none;
     margin-left: 150px;
+    cursor: pointer;
 
 }
 
