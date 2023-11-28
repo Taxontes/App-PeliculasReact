@@ -1,39 +1,41 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useCallback } from 'react'
 import { fetchPeliculasBySearch } from '../../services/fetchMovies'
 import { URL_IMAGE } from '../../costants/costants'
 import { Loader } from '../loader/Loader.jsx';
-
+import { useBusqueda } from '../../context/BusquedaContext.jsx';
+import debounce from 'just-debounce-it'
 import './pelicula.css'
 
 
 export const Peliculas = () => {
 
-    const [titleMovie, setTitleMovie] = useState('batman')
+    const {busqueda} = useBusqueda()
     const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(true)
   
+  
+    const debouncedFetch = useCallback(
+        debounce(async (searchTerm) => {
+            try {
+                const data = await fetchPeliculasBySearch(searchTerm);
+                setMovies(data.resultado);
+            } catch (error) {
+                console.error('Ocurrió un error al buscar la película', error);
+            } finally {
+                setLoading(false);
+            }
+        }, 1000),
+        []
+    );
 
     useEffect(() => {
+       
+        debouncedFetch(busqueda);
 
-        const fetchMovieSearching = async () => {
-            try {
-                const data = await fetchPeliculasBySearch(titleMovie)
-                console.log(data.resultado)
-                setMovies(data.resultado)
+    }, [busqueda, debouncedFetch]);
 
-            } catch (error) {
-                console.error('Ocurrió un error al buscar la pelicula', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-        fetchMovieSearching()
-
-    }, [titleMovie])
-
-
-
+  
     return (
         <>
             <section className='search container'>
