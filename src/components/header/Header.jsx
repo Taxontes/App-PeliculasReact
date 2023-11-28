@@ -33,7 +33,7 @@ export const Header = () => {
                     <nav className='navbar'>
                         <ul>
                             <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Películas</a></li>
+                            <li><Link className='enlace-react' to="trailers" smooth={true} duration={500}>Películas</Link></li>
                             <li><a href="#">Series</a></li>
                             <li><a href="#">Géneros</a></li>
                         </ul>
