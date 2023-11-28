@@ -35,7 +35,8 @@ export const Peliculas = () => {
 
     }, [busqueda, debouncedFetch]);
 
-  
+   
+    
     return (
         <>
             <section className='search container'>
@@ -43,7 +44,7 @@ export const Peliculas = () => {
                 <hr />
                 <div className="peliculas-contenedor">
                     <div className='search-content'>
-                        { movies ? (
+                        {movies && (
                             movies.map((item) => (
                                 <div key={item.id}>
                                     <img src={item.poster_path ? `${URL_IMAGE}${item.poster_path}` : '/notFound.jpg'} alt="" />
@@ -51,10 +52,11 @@ export const Peliculas = () => {
                                    
                                 </div>
                             ))
-                        ) : (
-                            <p>No se encontraron películas</p>
                         )}
                         {loading && <Loader/>}
+
+                        {!loading && movies.length === 0 && <p className='not-found-movies'>No se encontraron películas disponibles tras su búsqueda</p>}  
+                     
                         </div>
                     </div>
                 

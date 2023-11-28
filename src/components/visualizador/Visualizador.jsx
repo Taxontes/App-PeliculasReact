@@ -11,6 +11,7 @@ export const Visualizador = ({ movieId, setVisualizer }) => {
     const [movie, setMovie] = useState()
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [generos, setGeneros] = useState([])
 
 
     useEffect(() => {
@@ -18,10 +19,15 @@ export const Visualizador = ({ movieId, setVisualizer }) => {
             try {
                 const movieData = await fetchSearchMovie(movieId);
                 setMovie(movieData);
+                console.log(movie)
+                const genreNames = movieData?.genres?.map(genre => genre.name) || [];
+                setGeneros(genreNames);
+
 
                 const videoData = await fetchVideoMovie(movieId);
                 const allVideos = videoData.videos.results;
                 const officialTrailer = allVideos.find(video => video.type === 'Trailer');
+
                 setVideos(officialTrailer);
                 setLoading(false)
             } catch (error) {
@@ -62,6 +68,10 @@ export const Visualizador = ({ movieId, setVisualizer }) => {
                             <h2>{movie.original_title}</h2>
 
                             <p>{movie.overview}
+                            <p>Géneros: {generos.join(', ')} </p>
+                            <p>Fecha de producción: {movie.release_date}</p>
+                            <p>Duración: {movie.runtime} min</p>
+                            
                             </p>
                         </section>
 

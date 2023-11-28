@@ -61,7 +61,7 @@ export const Gallery = () => {
     return (
         <>
             <section className='movies container'>
-                <h2 id='trailers'>Películas más vistas</h2>
+                <h2 id='trailers'>Películas añadidas recientemente</h2>
                 <hr />
                 {visualicer && <Visualizador movieId={movieId} setVisualizer={setVisualizer} />}
                 <div className="box-container-1"  >
