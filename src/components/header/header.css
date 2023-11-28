@@ -161,7 +161,7 @@
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 887px) {
 
     .menu {
         padding: 20px;
@@ -191,6 +191,7 @@
         align-items: center;
         color: #000000;
         margin-top: 30px;
+
 
     }
 
@@ -231,10 +232,16 @@
         flex-direction: column;
     }
 
+    .btn-2 {
+        flex-direction: column;
+        margin: 0 auto;
+
+    }
+
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 497px) {
 
     .menu {
         padding: 20px;
@@ -291,6 +298,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+      
+
+    }
+    
+
+    #menu:checked~.buscador {
+        top: calc(100% + 400px);
 
     }
 
